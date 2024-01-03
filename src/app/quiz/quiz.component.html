@@ -1,1 +1,46 @@
-<p>quiz works!</p>
+<div class="quizBody">
+    <div *ngIf="start">
+        <section class="quiz-section">
+            <p>Select Category: {{category}}</p>
+            <button mat-raised-button color="primary" class="difficulty-btn" (click)="setCategory('easy')">Easy</button>
+            <button mat-raised-button color="accent" class="difficulty-btn"
+                (click)="setCategory('medium')">Medium</button>
+            <button mat-raised-button color="warn" class="difficulty-btn" (click)="setCategory('hard')">Hard</button>
+        </section>
+        <mat-divider class="quiz-section"></mat-divider>
+
+        <section class="quiz-section">
+            <p>Select Difficulty: {{difficulty}}</p>
+            <button mat-raised-button color="primary" class="difficulty-btn"
+                (click)="setDifficulty('Linux')">Linux</button>
+            <!-- <button mat-raised-button color="accent" class="difficulty-btn"
+                (click)="setDifficulty('Networking')">Networking</button> -->
+            <button mat-raised-button color="warn" class="difficulty-btn"
+                (click)="setDifficulty('DevOps')">DevOps</button>
+        </section>
+        <mat-divider class="quiz-section"></mat-divider>
+
+        <p>
+            <button mat-raised-button color="primary" (click)="loadQuestions()" style="margin-top: 30px;">Start
+                Quiz</button>
+        </p>
+    </div>
+    <mat-card *ngIf="!start">
+        <mat-card-content *ngIf="questionIndex + 1 <= Questions.length">
+            <div>Question {{ questionIndex + 1 }} of {{Questions.length}}</div>
+            <h2>{{Questions[questionIndex].question}}</h2>
+
+            <div *ngFor="let answer of currentAnswersList">
+                <button mat-raised-button color="primary" (click)="setAnswer(answer[0])" class="answerButton"
+                    *ngIf="answer[1]">{{answer[1]}}</button>
+            </div>
+        </mat-card-content>
+        <mat-card-content *ngIf="questionIndex + 1 > Questions.length">
+            Your Final score is {{totalCorrectAnswers}} out of {{Questions.length}}
+            <p>
+                <button mat-raised-button color="primary" (click)="playAgain()" style="margin-top: 30px;">Play
+                    Again</button>
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

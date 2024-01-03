@@ -1,0 +1,17 @@
+<div style="width:300px">
+    <h2 mat-dialog-title *ngIf="modalData.isAnswerCorrect">Answer Correct!</h2>
+    <h2 mat-dialog-title *ngIf="!modalData.isAnswerCorrect">Answer InCorrect!</h2>
+    <div mat-dialog-content>{{modalData.explanation}}</div>
+    <div mat-dialog-actions align="end">
+        <span>
+            <button type="button" mat-stroked-button color="primary" (click)="CloseDialog()"
+                *ngIf="modalData.isQuizFinished !== 4">
+                Next Question
+            </button>
+            <button type="button" mat-stroked-button color="primary" (click)="CloseDialog()"
+                *ngIf="modalData.isQuizFinished === 4">
+                Finish Quiz
+            </button>
+        </span>
+    </div>
+</div>
