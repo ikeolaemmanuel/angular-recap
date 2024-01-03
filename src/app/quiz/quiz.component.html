@@ -13,8 +13,6 @@
             <p>Select Difficulty: {{difficulty}}</p>
             <button mat-raised-button color="primary" class="difficulty-btn"
                 (click)="setDifficulty('Linux')">Linux</button>
-            <!-- <button mat-raised-button color="accent" class="difficulty-btn"
-                (click)="setDifficulty('Networking')">Networking</button> -->
             <button mat-raised-button color="warn" class="difficulty-btn"
                 (click)="setDifficulty('DevOps')">DevOps</button>
         </section>
@@ -31,8 +29,7 @@
             <h2>{{Questions[questionIndex].question}}</h2>
 
             <div *ngFor="let answer of currentAnswersList">
-                <button mat-raised-button color="primary" (click)="setAnswer(answer[0])" class="answerButton"
-                    *ngIf="answer[1]">{{answer[1]}}</button>
+                <button (click)="setAnswer(answer[0])" class="answerButton" *ngIf="answer[1]">{{answer[1]}}</button>
             </div>
         </mat-card-content>
         <mat-card-content *ngIf="questionIndex + 1 > Questions.length">
