@@ -1,0 +1,33 @@
+<div class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" [(ngModel)]="text" (ngModelChange)="searchIt()">
+    </mat-form-field>
+    <mat-form-field class="section">
+        <mat-label>Default Currency</mat-label>
+        <mat-select [(value)]="defaultCurrency">
+            <div *ngFor="let item of currencyList">
+                <mat-option [value]="item[0]">{{item[1]}}</mat-option>
+            </div>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="section">
+        <mat-label>Wanted Currency</mat-label>
+        <mat-select [(value)]="wantedCurrency">
+            <div *ngFor="let item of currencyList">
+                <mat-option [value]="item[0]">{{item[1]}}</mat-option>
+            </div>
+        </mat-select>
+    </mat-form-field>
+    <p>
+        <button mat-raised-button color="primary" (click)="convert()">Convert</button>
+    </p>
+    <mat-list role="list" class="section result" *ngIf="gottenRate > 0">
+        <div>
+            <mat-list-item role="listitem">Exchange Rate: {{gottenRate | currencyFormat:wantedCurrency  }}</mat-list-item>
+            <mat-list-item role="listitem">Total Value: {{  gottenRate  * text | currencyFormat:wantedCurrency }}</mat-list-item>
+            <mat-list-item role="listitem">Date: {{rateDate}}</mat-list-item>
+        </div>
+    </mat-list>
+
+</div>

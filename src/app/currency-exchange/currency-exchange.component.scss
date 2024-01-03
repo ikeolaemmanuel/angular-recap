@@ -1,0 +1,27 @@
+.example-form {
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 20px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.section {
+  display: block;
+  margin-top: 20px;
+}
+
+.result {
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .example-form {
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 20px;
+  }
+}
